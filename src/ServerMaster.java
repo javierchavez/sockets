@@ -95,10 +95,12 @@ public class ServerMaster
         worker.start();
         System.out.println("ServerMaster: *********** new Connection");
         allConnections.add(worker);
-        worker.send(new Response(Type.CONNECT,
-                                 startNanoSec,
-                                 store.getInventory(),
-                                 store.getBalance()).toString());
+        Response rsp = new Response(Type.CONNECT,
+                                    startNanoSec,
+                                    store.getInventory(),
+                                    store.getBalance());
+        rsp.setMsg("[" + port + "]" + host);
+        worker.send(rsp.toString());
       }
       catch (IOException e)
       {

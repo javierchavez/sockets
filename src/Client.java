@@ -298,7 +298,8 @@ public class Client
           startNanoSec = (long) response.getTime();
           lastInventoryUpdate = System.nanoTime();
 
-          System.out.println("[connected] server uptime: " + timeDiff() + "s");
+          System.out.println("connected " + response.getMsg() + " uptime: " +
+                             timeDiff() + "s");
           System.out.println("Inventory: " + thneedsInStore);
           System.out.println("Balance: " + response.getStringMonetaryData());
         }
